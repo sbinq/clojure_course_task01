@@ -16,12 +16,12 @@
                      (filter vector? (children data))))))
 
 (defn link-containers [nodes]
-  (filter (fn [[tag attrs]] (and (= tag :h3) (= (get attrs :class) "r"))) nodes))
+  (filter (fn [[tag attrs]] (and (= tag :h3) (= (:class attrs) "r"))) nodes))
 
 (defn container-href [container]
   ;; can we use threading macros? sticking to simplest clojure features
-  ;; not sure if (-> container children first attributes (get :href)) reads better or worse for me
-  (get (attributes (first (children container))) :href))
+  ;; not sure if (-> container children first attributes :href) reads better or worse for me
+  (:href (attributes (first (children container)))))
 
 (defn get-links []
   " 1) Find all elements containing {:class \"r\"}.
