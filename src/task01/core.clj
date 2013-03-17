@@ -44,7 +44,7 @@
   (let [data (parse "clojure_google.html")
         nodes (all-nodes-dumb-impl data)
         containers (link-containers nodes)]
-    (map container-href containers)))
+    (vec (map container-href containers))))
 
 (defn -main []
   (println (str "Found " (count (get-links)) " links!")))
